@@ -1,0 +1,23 @@
+<section class="tarjeta">
+  <h1>Eliminar novedad</h1>
+  <p>¿Seguro que querés eliminar esta novedad? <strong>No se puede deshacer</strong>, y sus imágenes también se borran.</p>
+
+  <div class="item item-confirmar">
+    <div class="miniaturas">
+      {{#each novedad.imagenes}}
+      <img src="{{this}}" alt="" width="72" height="72">
+      {{else}}
+      <span class="sin-imagen">Sin imagen</span>
+      {{/each}}
+    </div>
+    <div class="detalle">
+      <h2>{{novedad.titulo}}</h2>
+      <p class="subtitulo">{{novedad.subtitulo}}</p>
+    </div>
+  </div>
+
+  <form method="post" action="/admin/novedades/{{novedad.id}}/eliminar" class="acciones">
+    <button type="submit" class="boton boton-peligro">Sí, eliminar</button>
+    <a href="/admin/novedades" class="enlace-cancelar">Cancelar</a>
+  </form>
+</section>

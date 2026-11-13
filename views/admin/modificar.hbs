@@ -1,0 +1,48 @@
+<section class="tarjeta">
+  <h1>Modificar novedad</h1>
+
+  <form method="post" action="/admin/novedades/{{id}}/modificar" enctype="multipart/form-data" novalidate>
+    <label for="titulo">Título</label>
+    <input type="text" id="titulo" name="titulo" value="{{form.titulo}}" maxlength="150" required>
+    {{#if errores.titulo}}<p class="error-campo">{{errores.titulo}}</p>{{/if}}
+
+    <label for="subtitulo">Subtítulo</label>
+    <input type="text" id="subtitulo" name="subtitulo" value="{{form.subtitulo}}" maxlength="250" required>
+    {{#if errores.subtitulo}}<p class="error-campo">{{errores.subtitulo}}</p>{{/if}}
+
+    <label for="cuerpo">Texto</label>
+    <textarea id="cuerpo" name="cuerpo" rows="6" maxlength="3000" required>{{form.cuerpo}}</textarea>
+    {{#if errores.cuerpo}}<p class="error-campo">{{errores.cuerpo}}</p>{{/if}}
+
+    <fieldset class="imagenes">
+      <legend>Imágenes (opcionales)</legend>
+      <p class="ayuda">JPG, PNG o WebP, hasta 5 MB cada una. Si no elegís un archivo, se conserva la imagen actual.</p>
+
+      {{#each slots}}
+      <div class="slot">
+        <p class="slot-titulo">Imagen {{n}}</p>
+        {{#if url}}
+        <div class="slot-actual">
+          <img src="{{url}}" alt="Imagen {{n}} actual" width="96" height="96">
+          <label class="casilla"><input type="checkbox" name="quitar{{n}}" value="1"> Quitar esta imagen</label>
+        </div>
+        <label for="imagen{{n}}">Reemplazar por otra</label>
+        {{else}}
+        <p class="ayuda">Sin imagen.</p>
+        <label for="imagen{{n}}">Subir imagen</label>
+        {{/if}}
+        <input type="file" id="imagen{{n}}" name="imagen{{n}}" accept="image/jpeg,image/png,image/webp">
+      </div>
+      {{/each}}
+
+      {{#if errorImagenes}}<p class="error-campo">{{errorImagenes}}</p>{{/if}}
+    </fieldset>
+
+    {{#if errores}}<p class="ayuda">Si habías elegido archivos nuevos, volvé a seleccionarlos: el navegador no los conserva.</p>{{/if}}
+
+    <div class="acciones">
+      <button type="submit" class="boton">Guardar cambios</button>
+      <a href="/admin/novedades" class="enlace-cancelar">Cancelar</a>
+    </div>
+  </form>
+</section>

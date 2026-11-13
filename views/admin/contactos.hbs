@@ -1,0 +1,44 @@
+<section class="tarjeta">
+  <div class="encabezado">
+    <h1>Contactos</h1>
+    <nav class="filtros" aria-label="Filtrar mensajes">
+      <a href="/admin/contactos" class="{{#if filtroTodos}}activo{{/if}}">Todos</a>
+      <a href="/admin/contactos?filtro=sinleer" class="{{#if filtroSinLeer}}activo{{/if}}">Sin leer{{#if noLeidos}} ({{noLeidos}}){{/if}}</a>
+    </nav>
+  </div>
+
+  {{#if mensaje}}
+  <p class="aviso aviso-ok" role="status">{{mensaje}}</p>
+  {{/if}}
+  {{#if mensajeError}}
+  <p class="aviso aviso-error" role="alert">{{mensajeError}}</p>
+  {{/if}}
+
+  <ul class="lista">
+    {{#each contactos}}
+    <li class="contacto {{#unless leido}}contacto-nuevo{{/unless}}">
+      <div class="contacto-cabecera">
+        <strong>{{nombre}}</strong>
+        {{#unless leido}}<span class="etiqueta-nuevo">Nuevo</span>{{/unless}}
+        <span class="contacto-fecha">{{fecha}}</span>
+      </div>
+      <p class="contacto-telefono">Teléfono: {{telefono}}</p>
+      <p class="contacto-mensaje">{{mensaje}}</p>
+      <div class="contacto-acciones">
+        <form method="post" action="/admin/contactos/{{id}}/leido">
+          <input type="hidden" name="valor" value="{{valorNuevo}}">
+          <input type="hidden" name="filtro" value="{{filtro}}">
+          <button type="submit" class="boton boton-secundario boton-chico">{{textoBoton}}</button>
+        </form>
+        <a href="/admin/contactos/{{id}}/eliminar?filtro={{filtro}}" class="enlace-peligro">Eliminar</a>
+      </div>
+    </li>
+    {{else}}
+    <li class="vacio">{{textoVacio}}</li>
+    {{/each}}
+  </ul>
+
+  {{#if hayMas}}
+  <p class="ayuda">Se muestran los {{limite}} mensajes más recientes.</p>
+  {{/if}}
+</section>

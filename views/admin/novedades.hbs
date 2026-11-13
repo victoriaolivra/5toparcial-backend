@@ -1,0 +1,41 @@
+<section class="tarjeta">
+  <div class="encabezado">
+    <div>
+      <h1>Novedades</h1>
+      <span class="total">{{total}}</span>
+    </div>
+    <a href="/admin/novedades/agregar" class="boton">Agregar novedad</a>
+  </div>
+
+  {{#if mensaje}}
+  <p class="aviso aviso-ok" role="status">{{mensaje}}</p>
+  {{/if}}
+  {{#if mensajeError}}
+  <p class="aviso aviso-error" role="alert">{{mensajeError}}</p>
+  {{/if}}
+
+  <ul class="lista">
+    {{#each novedades}}
+    <li class="item">
+      <div class="miniaturas">
+        {{#each imagenes}}
+        <img src="{{this}}" alt="" width="72" height="72" loading="lazy">
+        {{else}}
+        <span class="sin-imagen">Sin imagen</span>
+        {{/each}}
+      </div>
+      <div class="detalle">
+        <h2>{{titulo}}</h2>
+        <p class="subtitulo">{{subtitulo}}</p>
+        <p class="resumen">{{resumen}}</p>
+                <p class="acciones-item">
+          <a href="/admin/novedades/{{id}}/modificar">Modificar</a>
+          <a href="/admin/novedades/{{id}}/eliminar" class="enlace-peligro">Eliminar</a>
+        </p>
+      </div>
+    </li>
+    {{else}}
+    <li class="vacio">Todavía no hay novedades cargadas.</li>
+    {{/each}}
+  </ul>
+</section>

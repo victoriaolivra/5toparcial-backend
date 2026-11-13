@@ -1,0 +1,172 @@
+/* Estilos del panel de administración */
+:root {
+  --rosa: #c2577a;
+  --rosa-oscuro: #a3446a;
+  --fondo: #fbf6f4;
+  --texto: #3b2f2f;
+  --borde: #e6d9d5;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+.barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  background: #fff;
+  border-bottom: 1px solid var(--borde);
+}
+.marca { font-weight: 700; color: var(--rosa-oscuro); }
+.salir { display: flex; align-items: center; gap: 0.75rem; margin: 0; }
+
+.contenido { max-width: 960px; margin: 2rem auto; padding: 0 1rem; }
+
+.tarjeta {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+.tarjeta-login { max-width: 380px; margin: 3rem auto; }
+.tarjeta h1 { margin-top: 0; font-size: 1.4rem; }
+
+label { display: block; margin: 1rem 0 0.25rem; font-weight: 600; }
+input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  font: inherit;
+}
+input:focus { outline: 2px solid var(--rosa); outline-offset: 1px; }
+
+.boton {
+  margin-top: 1.25rem;
+  padding: 0.6rem 1.25rem;
+  border: 0;
+  border-radius: 8px;
+  background: var(--rosa);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.boton:hover { background: var(--rosa-oscuro); }
+.boton-secundario { margin: 0; background: #fff; color: var(--rosa-oscuro); border: 1px solid var(--rosa); }
+.boton-secundario:hover { background: #fdeef3; }
+
+.aviso { padding: 0.6rem 0.9rem; border-radius: 8px; margin: 0 0 0.5rem; }
+.aviso-error { background: #fdecec; border: 1px solid #f1b8b8; color: #8a1f1f; }
+
+
+/* Listado de novedades */
+.encabezado { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.total { color: #7a6a6a; font-size: 0.9rem; }
+
+.lista { list-style: none; margin: 1rem 0 0; padding: 0; }
+.item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--borde);
+}
+.miniaturas { display: flex; gap: 0.5rem; flex-shrink: 0; }
+.miniaturas img { width: 72px; height: 72px; object-fit: cover; border-radius: 8px; border: 1px solid var(--borde); }
+.sin-imagen {
+  display: flex; align-items: center; justify-content: center;
+  width: 72px; height: 72px; border-radius: 8px;
+  background: #f4ecea; color: #9a8a8a; font-size: 0.75rem; text-align: center;
+}
+.detalle { min-width: 0; }
+.detalle h2 { margin: 0; font-size: 1.1rem; }
+.subtitulo { margin: 0.15rem 0 0.4rem; font-weight: 600; color: var(--rosa-oscuro); }
+.resumen { margin: 0; color: #5c4d4d; overflow-wrap: anywhere; }
+.vacio { padding: 1.5rem 0; color: #7a6a6a; text-align: center; border-top: 1px solid var(--borde); }
+
+@media (max-width: 520px) {
+  .item { flex-direction: column; }
+}
+
+
+/* Formulario de novedades */
+a.boton { display: inline-block; text-decoration: none; }
+.encabezado .boton { margin-top: 0; }
+.aviso-ok { background: #edf7ee; border: 1px solid #b7dbb9; color: #1f5a25; margin-top: 1rem; }
+
+textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  font: inherit;
+  resize: vertical;
+}
+textarea:focus { outline: 2px solid var(--rosa); outline-offset: 1px; }
+input[type="file"] { width: 100%; font: inherit; }
+
+.imagenes { margin: 1.25rem 0 0; padding: 0.75rem 1rem 1rem; border: 1px solid var(--borde); border-radius: 8px; }
+.imagenes legend { padding: 0 0.4rem; font-weight: 600; }
+.ayuda { margin: 0.25rem 0 0; color: #7a6a6a; font-size: 0.9rem; }
+.error-campo { margin: 0.3rem 0 0; color: #8a1f1f; font-size: 0.9rem; }
+
+.acciones { display: flex; align-items: center; gap: 1.25rem; margin-top: 1.5rem; }
+.acciones .boton { margin-top: 0; }
+.enlace-cancelar { color: var(--rosa-oscuro); }
+
+
+/* Modificar novedad */
+.slot { margin-top: 1rem; padding-top: 0.75rem; border-top: 1px dashed var(--borde); }
+.slot:first-of-type { border-top: 0; }
+.slot-titulo { margin: 0; font-weight: 700; }
+.slot-actual { display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem; }
+.slot-actual img { width: 96px; height: 96px; object-fit: cover; border-radius: 8px; border: 1px solid var(--borde); }
+.casilla { display: flex; align-items: center; gap: 0.4rem; margin: 0; font-weight: 400; }
+.acciones-item { margin: 0.5rem 0 0; }
+.acciones-item a { color: var(--rosa-oscuro); font-weight: 600; }
+
+
+/* Eliminar novedad */
+.acciones-item { display: flex; gap: 1rem; }
+.enlace-peligro { color: #b3261e !important; }
+.item-confirmar { margin: 1rem 0; border-bottom: 1px solid var(--borde); }
+.boton-peligro { background: #b3261e; }
+.boton-peligro:hover { background: #8c1d18; }
+
+
+/* Menú del panel */
+.barra-izquierda { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.menu { display: flex; gap: 0.25rem; }
+.menu a { padding: 0.35rem 0.75rem; border-radius: 8px; color: var(--texto); text-decoration: none; font-weight: 600; }
+.menu a:hover { background: #fdeef3; }
+.menu a.activo { background: var(--rosa); color: #fff; }
+.insignia {
+  display: inline-block; min-width: 1.25rem; padding: 0 0.4rem; margin-left: 0.2rem;
+  border-radius: 999px; background: #b3261e; color: #fff; font-size: 0.75rem; line-height: 1.25rem; text-align: center;
+}
+
+/* Contactos */
+.filtros { display: flex; gap: 0.5rem; }
+.filtros a { padding: 0.25rem 0.75rem; border: 1px solid var(--borde); border-radius: 999px; color: var(--texto); text-decoration: none; font-size: 0.9rem; }
+.filtros a.activo { background: var(--rosa); border-color: var(--rosa); color: #fff; }
+
+.contacto { padding: 1rem 0; border-top: 1px solid var(--borde); }
+.contacto-nuevo { background: #fff8fa; margin: 0 -1.5rem; padding: 1rem 1.5rem; }
+.contacto-confirmar { border: 1px solid var(--borde); border-radius: 8px; padding: 1rem; margin: 1rem 0; }
+.contacto-cabecera { display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; }
+.contacto-fecha { margin-left: auto; color: #7a6a6a; font-size: 0.85rem; }
+.etiqueta-nuevo { padding: 0 0.5rem; border-radius: 999px; background: var(--rosa); color: #fff; font-size: 0.75rem; }
+.contacto-telefono { margin: 0.25rem 0; color: #5c4d4d; }
+.contacto-mensaje { margin: 0.5rem 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.contacto-acciones { display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem; }
+.contacto-acciones form { margin: 0; }
+.boton-chico { padding: 0.3rem 0.75rem; font-size: 0.9rem; }

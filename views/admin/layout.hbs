@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{titulo}} · Bakes Lourdes</title>
+  <link rel="stylesheet" href="/stylesheets/admin.css">
+</head>
+<body>
+  <header class="barra">
+    <div class="barra-izquierda">
+      <span class="marca">Bakes Lourdes · Panel</span>
+      {{#if nombre}}
+      <nav class="menu" aria-label="Secciones del panel">
+        <a href="/admin/novedades" class="{{#if enNovedades}}activo{{/if}}">Novedades</a>
+        <a href="/admin/contactos" class="{{#if enContactos}}activo{{/if}}">Contactos{{#if noLeidos}} <span class="insignia">{{noLeidos}}</span>{{/if}}</a>
+      </nav>
+      {{/if}}
+    </div>
+    {{#if nombre}}
+    <form method="post" action="/admin/logout" class="salir">
+      <span>Hola, {{nombre}}</span>
+      <button type="submit" class="boton boton-secundario">Cerrar sesión</button>
+    </form>
+    {{/if}}
+  </header>
+
+  <main class="contenido">
+    {{{body}}}
+  </main>
+</body>
+</html>

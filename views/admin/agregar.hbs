@@ -1,0 +1,37 @@
+<section class="tarjeta">
+  <h1>Agregar novedad</h1>
+
+  <form method="post" action="/admin/novedades/agregar" enctype="multipart/form-data" novalidate>
+    <label for="titulo">Título</label>
+    <input type="text" id="titulo" name="titulo" value="{{form.titulo}}" maxlength="150" required>
+    {{#if errores.titulo}}<p class="error-campo">{{errores.titulo}}</p>{{/if}}
+
+    <label for="subtitulo">Subtítulo</label>
+    <input type="text" id="subtitulo" name="subtitulo" value="{{form.subtitulo}}" maxlength="250" required>
+    {{#if errores.subtitulo}}<p class="error-campo">{{errores.subtitulo}}</p>{{/if}}
+
+    <label for="cuerpo">Texto</label>
+    <textarea id="cuerpo" name="cuerpo" rows="6" maxlength="3000" required>{{form.cuerpo}}</textarea>
+    {{#if errores.cuerpo}}<p class="error-campo">{{errores.cuerpo}}</p>{{/if}}
+
+    <fieldset class="imagenes">
+      <legend>Imágenes (opcionales)</legend>
+      <p class="ayuda">JPG, PNG o WebP, hasta 5 MB cada una.</p>
+
+      <label for="imagen1">Imagen 1</label>
+      <input type="file" id="imagen1" name="imagen1" accept="image/jpeg,image/png,image/webp">
+
+      <label for="imagen2">Imagen 2</label>
+      <input type="file" id="imagen2" name="imagen2" accept="image/jpeg,image/png,image/webp">
+
+      {{#if errorImagenes}}<p class="error-campo">{{errorImagenes}}</p>{{/if}}
+    </fieldset>
+
+    {{#if errores}}<p class="ayuda">Si habías elegido imágenes, volvé a seleccionarlas: el navegador no las conserva.</p>{{/if}}
+
+    <div class="acciones">
+      <button type="submit" class="boton">Guardar novedad</button>
+      <a href="/admin/novedades" class="enlace-cancelar">Cancelar</a>
+    </div>
+  </form>
+</section>
